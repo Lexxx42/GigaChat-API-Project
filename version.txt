@@ -1,0 +1,5 @@
+version 0.1.0
+[+] module for reading secrets from `.env`
+[+] libs: poetry, requests, python-dotenv
+[+] versions file: version.txt
+[+] README.md upd
