@@ -1,0 +1,19 @@
+repos:
+  - repo: local
+    hooks:
+      - id: isort
+        name: Run isort
+        entry: isort
+        verbose: true
+        language: system
+      - id: ruff
+        name: Run ruff
+        entry: ruff check
+        verbose: true
+        args: [ --fix ]
+        language: python
+      #- id: basedpyright
+      #  name: Run basedpyright
+      #  entry: bash -c 'basedpyright "$@" || true' --
+      #  verbose: true
+      #  language: python

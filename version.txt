@@ -1,3 +1,11 @@
+version 0.2.0
+[+] added loguru
+[+] added logging module, functions to log requests/responses
+[+] added base API client
+[+] reworked authentication: added Auth class
+[+] added gigachat API class
+[+] added pre-commit, ruff, isort
+
 version 0.1.0
 [+] module for reading secrets from `.env`
 [+] libs: poetry, requests, python-dotenv
