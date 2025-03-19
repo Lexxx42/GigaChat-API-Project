@@ -1,3 +1,8 @@
+version 0.3.0
+[+] added pydantic
+[+] added pydantic schemas
+[+] added enums
+
 version 0.2.0
 [+] added loguru
 [+] added logging module, functions to log requests/responses

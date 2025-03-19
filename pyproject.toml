@@ -1,6 +1,6 @@
 [project]
 name = "gigachat-api-project"
-version = "0.2.0"
+version = "0.3.0"
 description = "blah-blah"
 authors = [
     {name = "Konyukhov Alexander",email = "jesusmisha@gmail.com"}
@@ -14,10 +14,112 @@ dependencies = [
     "loguru (>=0.7.3,<0.8.0)",
     "pre-commit (>=4.1.0,<5.0.0)",
     "ruff (>=0.11.0,<0.12.0)",
-    "isort (>=6.0.1,<7.0.0)"
+    "isort (>=6.0.1,<7.0.0)",
+    "pydantic (>=2.10.6,<3.0.0)"
 ]
 
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+line_length=120
+multi_line_output=3
+combine_as_imports=true
+include_trailing_comma=true
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+
+[tool.ruff.lint]
+extend-select = [
+    "E",       # pycodestyle
+    "N",       # pep8-naming
+    "D",       # pydocstyle
+    "ANN",     # flake8-annotations
+    "COM",     # flake8-commas
+    "C4",      # flake8-comprehensions
+    "FA",      # flake8-future-annotations
+    "ISC",     # flake8-implicit-str-concat
+    "T20",     # flake8-print
+    "PT",      # flake8-pytest-style
+    "RET",     # flake8-return
+    "SIM",     # flake8-simplify
+    "ARG",     # flake8-unused-arguments
+    "PTH",     # flake8-use-pathlib
+    "FIX",     # flake8-fix me
+    "ERA",     # eradicate (Find commented-out code)
+    "PL",      # Pylint
+    "PERF",    # Perflint
+]
+ignore = [
+    # pep8-naming (N)
+    "N812",  # Lowercase {name} imported as non-lowercase {asname}
+
+    # pydocstyle (D)
+    "D105",  # Missing docstring in magic method
+    "D202",  # No blank lines allowed after function docstring
+    "D205",  # 1 blank line required between summary line and description
+    "D212",  # Multi-line docstring summary should start at the first line
+    "D301",  # Use `r"""` if any backslashes in a docstring
+    "D415",  # First line should end with a period, question mark, or exclamation point
+
+    # pycodestyle (E)
+    "E701",  # Multiple statements on one line
+    "E731",  # Do not assign a lambda expression, use a def
+
+    # Pyflakes (F)
+    "F811",  # Redefinition of unused {name} from {row} - annotation of imported fixtures
+
+    # flake8-annotations (ANN)
+    "ANN002",  # Missing type annotation for *{name} - annotation for args
+    "ANN003",  # Missing type annotation for **{name} - annotation for kwargs
+    "ANN101",  # Missing type annotation for {name} in method - deprecated
+    "ANN102",  # Missing type annotation for {name} in classmethod - deprecated
+    "ANN204",  # Missing return type annotation for special method {name} - annotation for return type in __init__
+    "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed in {name}
+
+    # flake8-pytest-style (PT)
+    "PT001",  # Use @pytest.fixture() over @pytest.fixture
+    "PT004",  # Fixture {function} does not return anything, add leading underscore - deprecated
+    "PT011",  # pytest.raises({exception}) is too broad, set the match parameter or use a more specific exception
+    "PT013",  # Incorrect import of pytest; use import pytest instead
+    "PT023",  # Use @pytest.mark.{mark_name}{expected_parens} over @pytest.mark.{mark_name}{actual_parens}
+
+    # flake8-return (RET)
+    "RET503",  # Missing explicit `return` at the end of function able to return non-`None` value
+    "RET505",  # Unnecessary `else` after `return` statement
+    "RET506",  # Unnecessary `else` after `raise` statement
+
+    # flake8-simplify (SIM)
+    "SIM117",  # Use a single with statement with multiple contexts instead of nested with statements
+
+    # flake8-use-pathlib (PTH)
+    "PTH123",  # open() should be replaced by Path.open()
+
+    # Pylint (PL)
+    "PLR0913",  # Too many arguments in function definition
+    "PLR2004",  # Magic value used in comparison
+
+]
+exclude = [
+    "*_pb2.py"
+]
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?)|needs_allure)$"
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]  # Ignore `F401` (imported but unused) in all `__init__.py` files`
+"dto/*" = ["N815", "N816"]  # Ignore `N815`, `N816` (Variable {name} should not be mixedCase) in all dto files
+"test_*.py" = [
+    "D",       # Ignore `D` (pydocstyle)
+    "ANN201",  # Ignore `ANN201` (Missing return type annotation)
+    "ARG"      # Ignore `ARG` (flake8-unused-arguments) - fixtures
+]  # Ignore rules for tests
+
+[tool.ruff.lint.pycodestyle]
+max-line-length = 120
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
