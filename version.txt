@@ -1,3 +1,10 @@
+version 0.3.0
+[+] added pydantic
+[+] added pydantic schemas
+[+] added enums
+[+] added file for upload
+[+] added API endpoints
+
 version 0.2.0
 [+] added loguru
 [+] added logging module, functions to log requests/responses
