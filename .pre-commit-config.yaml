@@ -12,6 +12,11 @@ repos:
         verbose: true
         args: [ --fix ]
         language: python
+      - id: ruff
+        name: Run ruff formatter
+        entry: ruff format
+        verbose: true
+        language: python
       #- id: basedpyright
       #  name: Run basedpyright
       #  entry: bash -c 'basedpyright "$@" || true' --

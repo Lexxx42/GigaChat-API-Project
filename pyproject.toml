@@ -1,6 +1,6 @@
 [project]
 name = "gigachat-api-project"
-version = "0.3.0"
+version = "0.3.1"
 description = "blah-blah"
 authors = [
     {name = "Konyukhov Alexander",email = "jesusmisha@gmail.com"}
@@ -15,7 +15,8 @@ dependencies = [
     "pre-commit (>=4.1.0,<5.0.0)",
     "ruff (>=0.11.0,<0.12.0)",
     "isort (>=6.0.1,<7.0.0)",
-    "pydantic (>=2.10.6,<3.0.0)"
+    "pydantic (>=2.10.6,<3.0.0)",
+    "langchain-gigachat (>=0.3.8,<0.4.0)"
 ]
 
 
